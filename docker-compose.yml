@@ -1,0 +1,20 @@
+version: '2'
+services:
+  mogodb:
+      image: mongo
+      container_name: mongo-db
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: root
+      dns:
+        - 8.8.8.8
+      restart: always
+      networks:
+        - demo-network
+      ports:
+        - 27017-27019:27017-27019
+
+networks:
+  demo-network:
+    external:
+      name: demo-network
